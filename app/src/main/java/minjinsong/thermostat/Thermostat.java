@@ -27,10 +27,10 @@ public class Thermostat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thermostat);
-        final TextView cTemp = (TextView) findViewById(R.id.cTemp);
-        final TextView tTemp2 = (TextView) findViewById(R.id.tTemp);
+        cTemp = (TextView) findViewById(R.id.cTemp);
+        tTemp2 = (TextView) findViewById(R.id.tTemp);
 
-        /*final Thread tempsPull = new Thread(new Runnable() {
+        final Thread tempsPull = new Thread(new Runnable() {
             @Override
             public void run() {
                 while (true) {
@@ -48,7 +48,6 @@ public class Thermostat extends AppCompatActivity {
                     } catch (ConnectException e) {
                         e.printStackTrace();
                     }
-
                     cTemp.post(new Runnable() {
                         @Override
                         public void run() {
@@ -59,7 +58,7 @@ public class Thermostat extends AppCompatActivity {
                 }
             }
         });
-        tempsPull.start();*/
+        tempsPull.start();
 
         Button weekOverview = (Button) findViewById(R.id.WeekOverview);
         weekOverview.setOnClickListener(new View.OnClickListener() {
