@@ -17,7 +17,7 @@ import util.HeatingSystem;
 public class Thermostat extends AppCompatActivity {
     public static double temp, temp_current, temp_target, temp_day, temp_night;             //this should be retrieved from the server to show the current temp
     TextView temp1;
-    double tTemp=18;
+    double tTemp = 18;
     boolean firstPull = false;
 
     TextView cTemp;
@@ -27,8 +27,8 @@ public class Thermostat extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thermostat);
-        final TextView cTemp = (TextView)findViewById(R.id.cTemp);
-        final TextView tTemp2 = (TextView)findViewById(R.id.tTemp);
+        final TextView cTemp = (TextView) findViewById(R.id.cTemp);
+        final TextView tTemp2 = (TextView) findViewById(R.id.tTemp);
 
         /*final Thread tempsPull = new Thread(new Runnable() {
             @Override
