@@ -21,14 +21,10 @@ import util.HeatingSystem;
 
 public class Thermostat extends AppCompatActivity {
     public static double temp, temp_current, temp_target, temp_day, temp_night;             //this should be retrieved from the server to show the current temp
-<<<<<<< HEAD
-    TextView tTemp1, dTemp1, nTemp1;
-    double tTemp = 18;
+    TextView tTemp1, dTemp1, nTemp1, tTemp2;
     double dTemp, nTemp;
-=======
     TextView temp1;
     double tTemp = 18;
->>>>>>> 76e7ee935c6878d6105e74cbdaa630d9efcdfde9
     boolean firstPull = false;
 
     TextView cTemp;
@@ -38,7 +34,6 @@ public class Thermostat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thermostat);
         cTemp = (TextView) findViewById(R.id.cTemp);
-<<<<<<< HEAD
 
         final ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.layout);
         final TextView text1 = (TextView) findViewById(R.id.text1);
@@ -47,10 +42,7 @@ public class Thermostat extends AppCompatActivity {
         final Switch dNSwitch = (Switch) findViewById(R.id.dNSwitch);
         final Button applyTemp = (Button) findViewById(R.id.applyTemp);
         final ToggleButton weekState = (ToggleButton)findViewById(R.id.weekState);
-=======
         tTemp2 = (TextView) findViewById(R.id.tTemp);
-
->>>>>>> 76e7ee935c6878d6105e74cbdaa630d9efcdfde9
         final Thread tempsPull = new Thread(new Runnable() {
             @Override
             public void run() {
