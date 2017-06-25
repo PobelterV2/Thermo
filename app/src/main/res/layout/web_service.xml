@@ -26,7 +26,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="24dp"
-        android:text="Wednesday"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.938"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -54,7 +53,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="24dp"
-        android:text="12:59"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintLeft_toLeftOf="@id/timeText"
@@ -82,7 +80,6 @@
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="24dp"
-        android:text="30&#x2103;"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintLeft_toLeftOf="@id/cTempServerText"
@@ -103,13 +100,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.381" />
+
     <TextView
         android:id="@+id/tTempServer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="24dp"
-        android:text="30&#x2103;"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintLeft_toLeftOf="@id/tTempServerText"
@@ -132,12 +129,11 @@
         app:layout_constraintVertical_bias="0.458" />
 
     <TextView
-        android:id="@+id/dTempServer"
+        android:id="@+id/dTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="24dp"
-        android:text="30&#x2103;"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintLeft_toLeftOf="@id/dTempServerText"
@@ -159,12 +155,11 @@
         app:layout_constraintVertical_bias="0.535" />
 
     <TextView
-        android:id="@+id/nTempServer"
+        android:id="@+id/nTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="24dp"
-        android:text="30&#x2103;"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintLeft_toLeftOf="@id/nTempServerText"
@@ -190,7 +185,6 @@
         android:id="@+id/weekProgramStateServer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OFF"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="24dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -8,9 +8,9 @@ import android.widget.TextView;
 import util.*;
 
 public class WebService extends AppCompatActivity{
-    Button getdata, putdata;
-    TextView data1, data2;
-    String getParam, oldv, newv;
+    Button getdata;
+    TextView cTemp, tTemp, time, day, programState, dTemp, nTemp;
+    String getParam, getParam1, getParam2, getParam3, getParam4, getParam5, getParam6, oldv, newv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,10 +24,14 @@ public class WebService extends AppCompatActivity{
         HeatingSystem.BASE_ADDRESS = "http://wwwis.win.tue.nl/2id40-ws/46";
         HeatingSystem.WEEK_PROGRAM_ADDRESS = HeatingSystem.BASE_ADDRESS + "/weekProgram";
 
-        getdata = (Button)findViewById(R.id.getData);
-        putdata = (Button)findViewById(R.id.putData);
-        data1 = (TextView)findViewById(R.id.cTempServer);
-        data2 = (TextView)findViewById(R.id.tTempServer);
+        getdata = (Button) findViewById(R.id.getData);
+        cTemp = (TextView) findViewById(R.id.cTempServer);
+        tTemp = (TextView) findViewById(R.id.tTempServer);
+        time = (TextView) findViewById(R.id.timeServer);
+        day = (TextView) findViewById(R.id.day);
+        programState = (TextView) findViewById(R.id.weekProgramStateServer);
+        dTemp = (TextView) findViewById(R.id.dTemp);
+        nTemp = (TextView) findViewById(R.id.nTemp);
 
         /* When the user clicks on GET Data button the value of the corresponding parameter is read from the server
         and displayed in TextView data1
@@ -43,22 +47,58 @@ public class WebService extends AppCompatActivity{
                         getParam = "";
                         try {
                             getParam = HeatingSystem.get("currentTemperature");
+                            getParam1 = HeatingSystem.get("targetTemperature");
+                            getParam2 = HeatingSystem.get("day");
+                            getParam3 = HeatingSystem.get("time");
+                            getParam4 = HeatingSystem.get("weekProgramState");
+                            getParam5 = HeatingSystem.get("dayTemperature");
+                            getParam6 = HeatingSystem.get("nightTemperature");
 
-									HeatingSystem.get("day");
-									HeatingSystem.get("timeSerever");
-									HeatingSystem.get("tTempServer");
-									HeatingSystem.get("dTempServer");
-									HeatingSystem.get("nTempServer");
-									HeatingSystem.get("weekProgramState");
-
-                            data1.post(new Runnable() {
+                            cTemp.post(new Runnable() {
                                 @Override
                                 public void run() {
-                                    data1.setText(getParam);
+                                    cTemp.setText(getParam + "\u2103");
                                 }
                             });
+                            tTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    tTemp.setText(getParam1 + "\u2103");
+                                }
+                            });
+                            day.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    day.setText(getParam2);
+                                }
+                            });
+                            time.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    time.setText(getParam3);
+                                }
+                            });
+                            programState.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    programState.setText(getParam4);
+                                }
+                            });
+                            dTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    dTemp.setText(getParam5 + "\u2103");
+                                }
+                            });
+                            nTemp.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    nTemp.setText(getParam6 + "\u2103");
+                                }
+                            });
+
                         } catch (Exception e) {
-                            System.err.println("Error from getdata "+e);
+                            System.err.println("Error from getdata " + e);
                         }
                     }
                 }).start();
@@ -68,55 +108,5 @@ public class WebService extends AppCompatActivity{
         /* When the user clicks on PUT Data button the old value of the corresponding parameter is read from the server
         and displayed in TextView data1, the new uploaded value is displayed in TextView data2
          */
-        putdata.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            oldv = HeatingSystem.get("targetTemperature");
-                            HeatingSystem.put("targetTemperature", "16.0");
-                            newv = HeatingSystem.get("targetTemperature");
-
-                            /* Uncomment the following parts to see how to work with the properties of the week program */
-                            // Get the week program
-                            WeekProgram wpg = HeatingSystem.getWeekProgram();
-                            // Set the week program to default
-                            wpg.setDefault();
-
-                            wpg.data.get("Monday").set(5, new Switch("day", true, "07:30"));
-                            wpg.data.get("Monday").set(1, new Switch("night", true, "08:30"));
-                            wpg.data.get("Monday").set(6, new Switch("day", true, "18:00"));
-                            wpg.data.get("Monday").set(7, new Switch("day", true, "12:00"));
-                            wpg.data.get("Monday").set(8, new Switch("day", true, "18:00"));
-                            boolean duplicates = wpg.duplicates(wpg.data.get("Monday"));
-                            System.out.println("Duplicates found "+duplicates);
-
-                            //Upload the updated program
-                            HeatingSystem.setWeekProgram(wpg);
-
-                            data1.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    data1.setText(oldv);
-                                }
-                            });
-                            data2.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    data2.setText(newv);
-                                }
-                            });
-                        } catch (Exception e) {
-                            System.err.println("Error from getdata " + e);
-                        }
-                    }
-                }).start();
-
-            }
-        });
     }
 }

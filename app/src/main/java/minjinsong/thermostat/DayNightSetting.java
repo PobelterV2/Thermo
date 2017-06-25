@@ -42,6 +42,9 @@ public class DayNightSetting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dTemp = dTemp + 0.1f;
+                if(dTemp >= 30.0) {
+                    dTemp = 30.0;
+                }
                 temp1.setText(String.format("%.1f", dTemp) + " \u2103");
             }
         });
@@ -50,6 +53,9 @@ public class DayNightSetting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dTemp = dTemp - 0.1f;
+                if(dTemp <= 5.0) {
+                    dTemp = 5.0;
+                }
                 temp1.setText(String.format("%.1f", dTemp) + " \u2103");
             }
         });
@@ -57,6 +63,9 @@ public class DayNightSetting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 nTemp = nTemp + 0.1f;
+                if(nTemp >= 30.0) {
+                    nTemp = 30.0;
+                }
                 temp2.setText(String.format("%.1f", nTemp) + " \u2103");
             }
         });
@@ -65,6 +74,9 @@ public class DayNightSetting extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 nTemp = nTemp - 0.1f;
+                if(nTemp <= 5.0) {
+                    nTemp = 5.0;
+                }
                 temp2.setText(String.format("%.1f", nTemp) + " \u2103");
             }
         });
